@@ -44,6 +44,7 @@ $ scripts/qemu-boot-efi debian-qemu-uefi-sid-amd64.img
 
 Supported machines:
 - boneblack, the Beaglebone Black Board (AM335x)
+- omap3-igep, the OMAP3 IGEPv2 Board (DM3730)
 
 To create the images, run:
 
