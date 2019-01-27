@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+kvm -bios /usr/share/qemu/OVMF.fd \
+    -drive format=raw,file=${1} \
+    -net none \
+    -serial stdio \
+    -m 1G \
+    -cpu host \
+    -smp 2
