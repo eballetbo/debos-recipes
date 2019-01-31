@@ -1,4 +1,4 @@
-{{- $suite := or .suite "sid" -}}
+{{- $suite := or .suite "buster" -}}
 {{- $architecture := or .architecture "armhf" -}}
 {{- $machine := or .machine "omap3-igep" -}}
 {{- $ospack := or .ospack (printf "debian-base-%s-%s" $suite $architecture) -}}

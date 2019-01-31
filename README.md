@@ -24,20 +24,20 @@ $ sudo apt install qemu-kvm ovmf
 Now that that’s done, let’s create the images, run:
 
 ```sh
-$GOPATH/bin/debos -t suite:sid images/weston/debian-base.yaml
-$GOPATH/bin/debos -t suite:sid images/weston/debian-qemu-uefi.yaml
+$GOPATH/bin/debos images/weston/debian-base.yaml
+$GOPATH/bin/debos images/weston/debian-qemu-uefi.yaml
 ```
 
 Will create the following output:
 
-- debian-base-sid-amd64.tar.gz, a tarball with the debian base filesystem.
-- debian-qemu-uefi-sid-amd64.img, an image file for QEMU emulator.
-- debian-qemu-uefi-sid-amd64.vdi, a VirtualBox image.
+- debian-base-buster-amd64.tar.gz, a tarball with the debian base filesystem.
+- debian-qemu-uefi-buster-amd64.img, an image file for QEMU emulator.
+- debian-qemu-uefi-buster-amd64.vdi, a VirtualBox image.
 
 The final command runs the image using the QEMU emulator:
 
 ```sh
-$ scripts/qemu-boot-efi debian-qemu-uefi-sid-amd64.img
+$ scripts/qemu-boot-efi debian-qemu-uefi-buster-amd64.img
 ```
 
 ## Build an image and flash it into the supported boards.
@@ -50,21 +50,21 @@ Supported machines:
 To create the images, run:
 
 ```sh
-$GOPATH/bin/debos -t suite:sid debos/debian-base.yaml
-$GOPATH/bin/debos -t suite:sid debos/debian-$machine.yaml
+$GOPATH/bin/debos debos/debian-base.yaml
+$GOPATH/bin/debos debos/debian-$machine.yaml
 ```
 
 Will create the following output:
 
-- debian-base-sid-armhf.tar.gz, a tarball with the debian base filesystem.
-- debian-$machine-sid-armhf.img.gz, a gz-compressed image file for a $machine board.
-- debian-$machine-sid-armhf.img.gz.md5, the image checksum.
-- debian-$machine-sid-armhf.img.bmap, a bitmap summary for faster flashing via bmaptools.
+- debian-base-buster-armhf.tar.gz, a tarball with the debian base filesystem.
+- debian-$machine-buster-armhf.img.gz, a gz-compressed image file for a $machine board.
+- debian-$machine-buster-armhf.img.gz.md5, the image checksum.
+- debian-$machine-buster-armhf.img.bmap, a bitmap summary for faster flashing via bmaptools.
 
 To flash it, assuming your SD card is /dev/mmcblk0, use:
 
 ```
-bmaptool copy debian-$machine-sid-armhf.img.gz /dev/mmcblk0
+bmaptool copy debian-$machine-buster-armhf.img.gz /dev/mmcblk0
 ```
 
 The bmap file is automatically looked for in the current directory.
