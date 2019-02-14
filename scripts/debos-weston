@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+images=$(find images/weston/ -type f \( -name "*.yaml" ! -name "debian-base*" \))
+
+# Create base images for all supported architectures
+for arch in amd64 armhf; do
+    debos -t architecture:"$arch" images/weston/debian-base.yaml
+done
+
+for image in $images; do
+    debos "$image"
+done
