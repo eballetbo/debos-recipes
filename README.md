@@ -50,8 +50,8 @@ Supported machines:
 To create the images, run:
 
 ```sh
-$GOPATH/bin/debos debos/debian-base.yaml
-$GOPATH/bin/debos debos/debian-$machine.yaml
+$GOPATH/bin/debos images/weston/debian-base.yaml
+$GOPATH/bin/debos images/weston/debian-$machine.yaml
 ```
 
 Will create the following output:
