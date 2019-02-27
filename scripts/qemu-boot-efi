@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-kvm -bios /usr/share/qemu/OVMF.fd \
+qemu-system-x86_64 \
+    -enable-kvm -cpu host -smp 2 -m 1G \
+    -bios /usr/share/qemu/OVMF.fd \
     -drive format=raw,file=${1} \
-    -net none \
-    -serial stdio \
-    -m 1G \
-    -cpu host \
-    -smp 2
+    -net nic,model=virtio \
+    -net user,hostfwd=tcp::2222-:22 \
+    -serial stdio
